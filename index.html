@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Cross-Browser QRCode generator for Javascript</title>
+
+<script type="text/javascript" src="qrcode.min.js"></script>
+</head>
+<body>
+<input id="text" type="text" value="Input Goes here" /><br />
+
+<div id="qrcode" style="width:256px; height:256; margin-top:15px;"></div>
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 256,
+	height : 256
+});
+
+function makeCode () {		
+	var elText = document.getElementById("text");
+	
+	if (!elText.value) {
+		alert("Input a text");
+		elText.focus();
+		return;
+	}
+	
+	qrcode.makeCode(elText.value);
+}
+
+makeCode();
+
+
+</script>
+	<br />
+	<button onclick="makeCode()">Click me</button>
+</body>
+</html>
